@@ -11,4 +11,4 @@ Include functions:
 - y2i
 
 ## 2\. Tracking
-Using pattern to get changed website. Send email update website to email list.
+Using pattern to get changed website. Send updating notification to mailing list.
