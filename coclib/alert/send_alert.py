@@ -10,7 +10,7 @@
 
 import smtplib
 import sys
-import config
+from . import config
 
 
 def send_alert(subject, content, recipient='lalahahaaa@gmail.com'):
@@ -42,7 +42,7 @@ def send_alert(subject, content, recipient='lalahahaaa@gmail.com'):
 
     try:
         session.sendmail(sender, recipient, headers + "\r\n\r\n" + content)
-        print 'The email was sent successfully!'
+        print('The email was sent successfully!')
         return 0
     except Exception as e:
         sys.stderr.write("Failed to send email! %s\n" % e)
@@ -57,3 +57,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+

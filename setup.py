@@ -15,3 +15,4 @@ setup_args = {
 setup_args['install_requires'] = ['BeautifulSoup4']
 
 setup(**setup_args)
+

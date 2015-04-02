@@ -10,4 +10,4 @@
     Standardize function by coc
 """
 
-from stdvietnamese import tohop2utf8, new_diacritic, remove_diacritic, y2i
+from .stdvietnamese import tohop2utf8, new_diacritic, remove_diacritic, y2i

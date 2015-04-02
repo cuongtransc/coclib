@@ -7,13 +7,18 @@
 # URL:     http://tranhuucuong91.wordpress.com/
 # License: BSD
 
+from __future__ import print_function
+
 import sqlite3
-import config
+from . import config
 from coclib.alert import send_alert
 
 import bs4
-import urllib2
-from urlparse import urljoin
+
+#import urllib2
+from urllib.request import urlopen, Request
+#from urlparse import urljoin
+from urllib.parse import urljoin
 
 import base64
 
@@ -68,11 +73,13 @@ class Tracking(object):
         cur.execute("CREATE TABLE IF NOT EXISTS %s(%s)" % (self.name, table))
 
         # Make a request
-        rq = urllib2.Request(self.url, headers=self.headers)
+        #rq = urllib2.Request(self.url, headers=self.headers)
+        rq = Request(self.url, headers=self.headers)
 
         try:
             # while True:
-                html = urllib2.urlopen(rq).read()
+                #html = urllib2.urlopen(rq).read()
+                html = urlopen(rq).read()
                 bs4html = bs4.BeautifulSoup(html)
 
                 # tnew   :   t new
@@ -85,7 +92,7 @@ class Tracking(object):
                     t = bs4html.find(p['name'], p['attrs'])
 
                     if not t:
-                        print "Don't find %s:%s." % (p['name'], p['attrs'])
+                        print("Don't find %s:%s." % (p['name'], p['attrs']))
                         raise Exception
 
                     for i in t('a'):
@@ -148,9 +155,9 @@ class Tracking(object):
                 # time.sleep(self.time_retry)
 
         except Exception as e:
-            print e
+            print(e)
             for filename, lineno, function, text in traceback.extract_tb(sys.exc_info()[2]):
-                print filename, lineno, function, text
+                print(filename, lineno, function, text)
         finally:
             fout.close()
 

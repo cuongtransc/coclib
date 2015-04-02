@@ -126,21 +126,30 @@ def y2i(utf8_str):
     return r.sub(lambda m: replaces_dict[m.group(0)], utf8_str)
 
 
+
 def main():
     import argparse
 
     parser = argparse.ArgumentParser(description='standardize vietnamese')
-    parser.add_argument('input', type=str)
-    parser.add_argument('output', type=str)
+    parser.add_argument('infiles', type=str, nargs="+")
+    parser.add_argument("-S", "--suffix", metavar='SUFFIX',
+     help="override the usual backup suffix",
+        type=str, nargs='?', default=False)
 
     args = parser.parse_args()
 
-    with open(args.input) as f:
-        old_data = f.read()
-        new_data = new_diacritic(tohop2utf8(old_data))
+    for filename in args.infiles:
+        with open(filename) as f:
+            old_data = f.read()
+            new_data = new_diacritic(tohop2utf8(old_data))
 
-    with open(args.output, 'w') as f:
-        f.write(new_data)
+        with open(filename, 'w') as f:
+                f.write(new_data)
+
+        if args.suffix:
+            with open(filename + args.suffix, 'w') as f:
+                f.write(old_data)
+
 
 if __name__ == '__main__':
     main()

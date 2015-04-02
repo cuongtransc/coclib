@@ -7,4 +7,4 @@
 # URL:     http://tranhuucuong91.wordpress.com/
 # License: BSD
 
-from send_alert import send_alert
+from .send_alert import send_alert

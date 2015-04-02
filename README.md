@@ -12,3 +12,9 @@ Include functions:
 
 ## 2\. Tracking
 Using pattern to get changed website. Send updating notification to mailing list.
+
+
+# Install
+```sh
+sudo python setup.py install
+```

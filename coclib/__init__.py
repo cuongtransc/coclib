@@ -7,6 +7,6 @@
 # URL:     http://tranhuucuong91.wordpress.com/
 # License: BSD
 
-import standardize
-import alert
-import tracking
+from . import standardize
+from . import alert
+from . import tracking

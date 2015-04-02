@@ -7,4 +7,4 @@
 # URL:     http://tranhuucuong91.wordpress.com/
 # License: BSD
 
-from tracking import Tracking
+from .tracking import Tracking
