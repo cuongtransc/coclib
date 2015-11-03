@@ -15,10 +15,14 @@ from coclib.alert import send_alert
 
 import bs4
 
-#import urllib2
-from urllib.request import urlopen, Request
-#from urlparse import urljoin
-from urllib.parse import urljoin
+import sys
+
+if sys.version_info < (3, 0):
+    from urllib2 import urlopen, Request
+    from urlparse import urljoin
+else:
+    from urllib.request import urlopen, Request
+    from urllib.parse import urljoin
 
 import base64
 
